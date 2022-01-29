@@ -3,20 +3,46 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <groupId>com.yuanhaoji</groupId>
+        <groupId>com.yuanhaoji.sparkml</groupId>
         <artifactId>sparkml</artifactId>
         <version>0.1.0</version>
     </parent>
 
     <artifactId>common</artifactId>
+    <name>${project.artifactId}</name>
+    <version>${project.parent.version}</version>
+    <packaging>jar</packaging>
 
     <dependencies>
+        <!-- hadoop-common -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+        </dependency>
+
+        <!-- hadoop-client -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+        </dependency>
+
+        <!-- hadoop-hdfs -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+        </dependency>
+
         <!-- jcommander -->
         <dependency>
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
+        </dependency>
+
+        <!-- slf4j-api -->
+        <dependency>
+            <artifactId>slf4j-api</artifactId>
+            <groupId>org.slf4j</groupId>
         </dependency>
 
         <!-- junit -->

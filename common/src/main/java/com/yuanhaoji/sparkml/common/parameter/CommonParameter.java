@@ -2,6 +2,10 @@ package com.yuanhaoji.sparkml.common.parameter;
 
 import com.beust.jcommander.Parameter;
 
+/**
+ * @author shenke
+ * @since 1.8
+ */
 public class CommonParameter {
 
     @Parameter(names = {"-h", "--help"}, description = "Show help message", help = true)

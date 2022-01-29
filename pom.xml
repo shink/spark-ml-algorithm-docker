@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.yuanhaoji</groupId>
+    <groupId>com.yuanhaoji.sparkml</groupId>
     <artifactId>sparkml</artifactId>
     <version>0.1.0</version>
     <packaging>pom</packaging>
@@ -26,20 +26,47 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
 
+        <dockerhub.username>tsund</dockerhub.username>
+        <dockerhub.repository.prefix>spark-ml-</dockerhub.repository.prefix>
+        <hadoop.version>2.6.0</hadoop.version>
         <spark.version>3.1.2</spark.version>
         <jcommander.version>1.78</jcommander.version>
+        <slf4j.version>1.7.29</slf4j.version>
+        <logback.version>1.2.10</logback.version>
         <junit.version>4.13</junit.version>
         <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
         <maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+        <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <!-- common -->
             <dependency>
-                <groupId>com.yuanhaoji</groupId>
+                <groupId>com.yuanhaoji.sparkml</groupId>
                 <artifactId>common</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <!-- hadoop-common -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-common</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+
+            <!-- hadoop-client -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-client</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+
+            <!-- hadoop-hdfs -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-hdfs</artifactId>
+                <version>${hadoop.version}</version>
             </dependency>
 
             <!-- spark core -->
@@ -63,6 +90,27 @@
                 <version>${jcommander.version}</version>
             </dependency>
 
+            <!-- slf4j-api -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <!-- logback-core -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <!-- logback-classic -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
             <!-- junit -->
             <dependency>
                 <groupId>junit</groupId>
@@ -76,6 +124,7 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!-- maven-scala-plugin -->
                 <plugin>
                     <groupId>org.scala-tools</groupId>
                     <artifactId>maven-scala-plugin</artifactId>
@@ -90,6 +139,7 @@
                     </executions>
                 </plugin>
 
+                <!-- maven-assembly-plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
@@ -109,8 +159,50 @@
                         </execution>
                     </executions>
                 </plugin>
+
+                <!-- maven-deploy-plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <configuration>
+                        <!-- skip artifact deployment -->
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <!-- build and push docker -->
+        <profile>
+            <id>docker</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- dockerfile-maven-plugin -->
+                        <plugin>
+                            <groupId>com.spotify</groupId>
+                            <artifactId>dockerfile-maven-plugin</artifactId>
+                            <version>${dockerfile-maven-plugin.version}</version>
+                            <executions>
+                                <execution>
+                                    <id>default</id>
+                                    <goals>
+                                        <goal>build</goal>
+                                        <goal>push</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                            <configuration>
+                                <noCache>true</noCache>
+                                <pullNewerImage>false</pullNewerImage>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

@@ -3,6 +3,10 @@ package com.yuanhaoji.sparkml.common.parameter;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 
+/**
+ * @author shenke
+ * @since 1.8
+ */
 public class CommonParser {
 
     public CommonParameter parse(String[] args) {
