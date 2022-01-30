@@ -17,6 +17,7 @@
         <module>common</module>
         <module>kmeans</module>
         <module>lda</module>
+        <module>gmm</module>
     </modules>
 
     <properties>
