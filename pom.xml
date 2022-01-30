@@ -18,6 +18,7 @@
         <module>kmeans</module>
         <module>lda</module>
         <module>gmm</module>
+        <module>binomial-logistic-regression</module>
     </modules>
 
     <properties>
