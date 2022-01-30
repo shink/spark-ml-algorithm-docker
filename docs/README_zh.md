@@ -16,6 +16,12 @@
 ## 算法
 
 - [KMeans](../kmeans)
+- [Latent Dirichlet allocation](../lda)
+- [Gaussian Mixture Model](../gmm)
+- [Binomial Logistic Regression](../binomial-logistic-regression)
+- [Multinomial Logistic Regression](../multinomial-logistic-regression)
+- [Decision Tree Classification](../decision-tree-classification)
+- [Random Forest Classification](../random-forest-classification)
 
 ## 开发
 

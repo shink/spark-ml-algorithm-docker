@@ -1,4 +1,4 @@
-## LDA
+## Latent Dirichlet allocation
 
 <p align="center">
     <img src="https://img.shields.io/docker/stars/tsund/spark-ml-lda.svg" />
@@ -25,6 +25,8 @@ docker run --env-file env-file.example \\
            tsund/spark-ml-lda:${TAG}
 ```
 
-### Reference
+### References
+
+[v3.1.2 ml-clustering](https://spark.apache.org/docs/3.1.2/ml-clustering.html#latent-dirichlet-allocation-lda)
 
 [spark/examples/ml/LDAExample.scala](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/ml/LDAExample.scala)
