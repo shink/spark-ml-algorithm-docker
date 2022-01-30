@@ -1,6 +1,8 @@
 package com.yuanhaoji.sparkml.gmm
 
+import com.yuanhaoji.sparkml.common.io.hadoop.HdfsFileManager
 import com.yuanhaoji.sparkml.common.parameter.CommonParser
+import com.yuanhaoji.sparkml.common.util.PathUtil
 import org.apache.spark.ml.clustering.GaussianMixture
 import org.apache.spark.sql.SparkSession
 
@@ -16,8 +18,24 @@ object Main {
           .master(parameter.getMasterUrl)
           .getOrCreate()
 
+        val trainDatasetPath = parameter.getTrainDatasetPath
+
+        // Copy the directory from the local file system to hdfs file system.
+        // For example, the parameter is hdfs://master:9000/dir/dataset,
+        // then the directory at /dir/dataset will be copied
+        // to the hdfs file system at hdfs://master:9000/dir/dataset.
+        if (PathUtil.isHdfsPath(trainDatasetPath)) {
+            val hdfsPath = PathUtil.split(trainDatasetPath)
+            val uri = hdfsPath.getUri
+            val path = hdfsPath.getPath
+
+            val fileManager = new HdfsFileManager(uri, "root")
+
+            fileManager.copy(path, path)
+        }
+
         // Loads data
-        val dataset = spark.read.format("libsvm").load(parameter.getTrainDatasetPath)
+        val dataset = spark.read.format("libsvm").load(trainDatasetPath)
 
         // Trains Gaussian Mixture Model
         val gmm = new GaussianMixture()
