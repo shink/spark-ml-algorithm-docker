@@ -13,4 +13,4 @@ WORKDIR /sparkml
 COPY ${JAR_FILE} kmeans.jar
 COPY entrypoint.sh .
 
-ENTRYPOINT ["./entrypoint.sh", "kmeans.jar"]
+ENTRYPOINT ["sh", "./entrypoint.sh", "kmeans.jar"]

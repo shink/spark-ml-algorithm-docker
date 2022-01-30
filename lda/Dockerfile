@@ -13,4 +13,4 @@ WORKDIR /sparkml
 COPY ${JAR_FILE} lda.jar
 COPY entrypoint.sh .
 
-ENTRYPOINT ["./entrypoint.sh", "lda.jar"]
+ENTRYPOINT ["sh", "./entrypoint.sh", "lda.jar"]
