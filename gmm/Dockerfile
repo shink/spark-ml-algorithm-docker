@@ -12,5 +12,6 @@ ARG JAR_FILE
 WORKDIR /sparkml
 COPY ${JAR_FILE} gmm.jar
 COPY entrypoint.sh .
+COPY dataset ./dataset
 
 ENTRYPOINT ["sh", "./entrypoint.sh", "gmm.jar"]
