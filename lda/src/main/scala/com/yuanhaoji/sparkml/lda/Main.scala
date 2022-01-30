@@ -30,12 +30,16 @@ object Main {
             val path = hdfsPath.getPath
 
             val fileManager = new HdfsFileManager(uri, "root")
-
             fileManager.copy(path, path)
+
+            val hadoopConf = spark.sparkContext.hadoopConfiguration
+            hadoopConf.set("fs.hdfs.impl", classOf[org.apache.hadoop.hdfs.DistributedFileSystem].getName)
+            hadoopConf.set("fs.file.impl", classOf[org.apache.hadoop.fs.LocalFileSystem].getName)
         }
 
         // Loads data
-        val dataset = spark.read.format("libsvm").load(trainDatasetPath)
+        val dataset = spark.read.format("libsvm")
+          .load(trainDatasetPath)
 
         // Trains a LDA model
         val lda = new LDA().setK(10).setMaxIter(10)
