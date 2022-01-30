@@ -20,6 +20,7 @@
         <module>gmm</module>
         <module>binomial-logistic-regression</module>
         <module>multinomial-logistic-regression</module>
+        <module>decision-tree-classification</module>
     </modules>
 
     <properties>
