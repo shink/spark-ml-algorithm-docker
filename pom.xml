@@ -21,6 +21,7 @@
         <module>binomial-logistic-regression</module>
         <module>multinomial-logistic-regression</module>
         <module>decision-tree-classification</module>
+        <module>random-forest-classification</module>
     </modules>
 
     <properties>
