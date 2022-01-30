@@ -16,11 +16,12 @@
     <modules>
         <module>common</module>
         <module>kmeans</module>
+        <module>lda</module>
     </modules>
 
     <properties>
         <project.script.execute.directory>bin</project.script.execute.directory>
-        <project.document.directory>doc</project.document.directory>
+        <project.document.directory>docs</project.document.directory>
         <project.config.directory>src/main/resources</project.config.directory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
