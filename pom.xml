@@ -19,6 +19,7 @@
         <module>lda</module>
         <module>gmm</module>
         <module>binomial-logistic-regression</module>
+        <module>multinomial-logistic-regression</module>
     </modules>
 
     <properties>
