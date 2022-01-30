@@ -7,10 +7,10 @@ LABEL maintainer="Yuanhao JI" \
 RUN apt-get update && apt-get clean && rm -rf /tmp/* && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_OPTS "-Xms128m -Xmx512m"
-ARG jar-file
+ARG JAR_FILE
 
 WORKDIR /sparkml
-COPY ${jar-file} kmeans.jar
+COPY ${JAR_FILE} kmeans.jar
 COPY entrypoint.sh .
 
 ENTRYPOINT ["./entrypoint.sh", "kmeans.jar"]
