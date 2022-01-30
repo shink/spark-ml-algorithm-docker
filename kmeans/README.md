@@ -25,6 +25,8 @@ docker run --env-file env-file.example \\
            tsund/spark-ml-kmeans:${TAG}
 ```
 
-### Reference
+### References
+
+[v3.1.2 ml-clustering](https://spark.apache.org/docs/3.1.2/ml-clustering.html#k-means)
 
 [spark/examples/ml/KMeansExample.scala](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/ml/KMeansExample.scala)

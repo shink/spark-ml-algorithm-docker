@@ -16,6 +16,12 @@
 ## Algorithms
 
 - [KMeans](kmeans)
+- [Latent Dirichlet allocation](lda)
+- [Gaussian Mixture Model](gmm)
+- [Binomial Logistic Regression](binomial-logistic-regression)
+- [Multinomial Logistic Regression](multinomial-logistic-regression)
+- [Decision Tree Classification](decision-tree-classification)
+- [Random Forest Classification](random-forest-classification)
 
 ## Development
 
@@ -39,7 +45,7 @@ Build docker image:
 mvn clean package -DskipTests -Pdocker
 ```
 
-## Reference
+## References
 
 [v3.1.2 ml-guide](https://spark.apache.org/docs/3.1.2/ml-guide.html)
 

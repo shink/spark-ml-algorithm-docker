@@ -27,6 +27,6 @@ docker run --env-file env-file.example \\
 
 ### References
 
-[v3.1.2 ml-classification](https://spark.apache.org/docs/3.1.2/ml-classification-regression.html#binomial-logistic-regression)
+[v3.1.2 ml-classification-regression](https://spark.apache.org/docs/3.1.2/ml-classification-regression.html#binomial-logistic-regression)
 
 [spark/examples/ml/LogisticRegressionWithElasticNetExample.scala](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/ml/LogisticRegressionWithElasticNetExample.scala)
