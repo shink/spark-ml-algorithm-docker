@@ -1,0 +1,4 @@
+MASTER_URL=spark://master:7077
+TRAIN_DATASET_PATH=hdfs://master:9000/train-data.txt
+TEST_DATASET_PATH=hdfs://master:9000/test-data.txt
+VALIDATE_DATASET_PATH=hdfs://master:9000/validate-data.txt
