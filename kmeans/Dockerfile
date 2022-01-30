@@ -12,5 +12,6 @@ ARG version
 WORKDIR /sparkml
 COPY target/kmeans-${version}-jar-with-dependencies.jar kmeans.jar
 COPY entrypoint.sh .
+COPY dataset ./dataset
 
 ENTRYPOINT ["./entrypoint.sh", "kmeans.jar"]
