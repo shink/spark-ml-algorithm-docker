@@ -39,6 +39,7 @@ public class HdfsFileManager implements FileManager {
     @Override
     public boolean mkdir(String dirPath) {
         Configuration conf = new Configuration();
+        conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
         FileSystem fs = null;
 
         try {
@@ -70,6 +71,7 @@ public class HdfsFileManager implements FileManager {
     @Override
     public boolean create(String filePath) {
         Configuration conf = new Configuration();
+        conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
         FileSystem fs = null;
 
         try {
@@ -103,6 +105,7 @@ public class HdfsFileManager implements FileManager {
     @Override
     public byte[] read(String filePath) {
         Configuration conf = new Configuration();
+        conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
         FileSystem fs = null;
 
         try {
@@ -141,6 +144,7 @@ public class HdfsFileManager implements FileManager {
     @Override
     public boolean write(String filePath, byte[] content, int off, int len) {
         Configuration conf = new Configuration();
+        conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
         FileSystem fs = null;
 
         try {
@@ -172,6 +176,7 @@ public class HdfsFileManager implements FileManager {
     @Override
     public boolean copy(String srcFilePath, String dstFilePath) {
         Configuration conf = new Configuration();
+        conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
         FileSystem fs = null;
         try {
             fs = FileSystem.get(uri, conf, user);
