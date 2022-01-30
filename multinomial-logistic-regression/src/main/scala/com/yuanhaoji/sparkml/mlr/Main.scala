@@ -1,6 +1,7 @@
 package com.yuanhaoji.sparkml.mlr
 
 import com.yuanhaoji.sparkml.common.parameter.CommonParser
+import com.yuanhaoji.sparkml.common.util.PathUtil
 import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.sql.SparkSession
 
@@ -16,11 +17,19 @@ object Main {
           .master(parameter.getMasterUrl)
           .getOrCreate()
 
+        val trainDatasetPath = parameter.getTrainDatasetPath
+
+        if (PathUtil.isHdfsPath(trainDatasetPath)) {
+            val hadoopConf = spark.sparkContext.hadoopConfiguration
+            hadoopConf.set("fs.hdfs.impl", classOf[org.apache.hadoop.hdfs.DistributedFileSystem].getName)
+            hadoopConf.set("fs.file.impl", classOf[org.apache.hadoop.fs.LocalFileSystem].getName)
+        }
+
         // Load training data
         val training = spark
           .read
           .format("libsvm")
-          .load(parameter.getTrainDatasetPath)
+          .load(trainDatasetPath)
 
         val lr = new LogisticRegression()
           .setMaxIter(10)

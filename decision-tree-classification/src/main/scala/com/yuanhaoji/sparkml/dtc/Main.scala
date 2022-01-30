@@ -1,6 +1,7 @@
 package com.yuanhaoji.sparkml.dtc
 
 import com.yuanhaoji.sparkml.common.parameter.CommonParser
+import com.yuanhaoji.sparkml.common.util.PathUtil
 import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.classification.{DecisionTreeClassificationModel, DecisionTreeClassifier}
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
@@ -19,8 +20,16 @@ object Main {
           .master(parameter.getMasterUrl)
           .getOrCreate()
 
+        val trainDatasetPath = parameter.getTrainDatasetPath
+
+        if (PathUtil.isHdfsPath(trainDatasetPath)) {
+            val hadoopConf = spark.sparkContext.hadoopConfiguration
+            hadoopConf.set("fs.hdfs.impl", classOf[org.apache.hadoop.hdfs.DistributedFileSystem].getName)
+            hadoopConf.set("fs.file.impl", classOf[org.apache.hadoop.fs.LocalFileSystem].getName)
+        }
+
         // Load the data stored in LIBSVM format as a DataFrame.
-        val data = spark.read.format("libsvm").load(parameter.getTrainDatasetPath)
+        val data = spark.read.format("libsvm").load(trainDatasetPath)
 
         // Index labels, adding metadata to the label column.
         // Fit on whole dataset to include all labels in index.

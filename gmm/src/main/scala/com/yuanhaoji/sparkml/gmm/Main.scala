@@ -1,6 +1,7 @@
 package com.yuanhaoji.sparkml.gmm
 
 import com.yuanhaoji.sparkml.common.parameter.CommonParser
+import com.yuanhaoji.sparkml.common.util.PathUtil
 import org.apache.spark.ml.clustering.GaussianMixture
 import org.apache.spark.sql.SparkSession
 
@@ -16,8 +17,16 @@ object Main {
           .master(parameter.getMasterUrl)
           .getOrCreate()
 
+        val trainDatasetPath = parameter.getTrainDatasetPath
+
+        if (PathUtil.isHdfsPath(trainDatasetPath)) {
+            val hadoopConf = spark.sparkContext.hadoopConfiguration
+            hadoopConf.set("fs.hdfs.impl", classOf[org.apache.hadoop.hdfs.DistributedFileSystem].getName)
+            hadoopConf.set("fs.file.impl", classOf[org.apache.hadoop.fs.LocalFileSystem].getName)
+        }
+
         // Loads data
-        val dataset = spark.read.format("libsvm").load(parameter.getTrainDatasetPath)
+        val dataset = spark.read.format("libsvm").load(trainDatasetPath)
 
         // Trains Gaussian Mixture Model
         val gmm = new GaussianMixture()
