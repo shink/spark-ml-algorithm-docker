@@ -14,4 +14,4 @@ COPY ${JAR_FILE} kmeans.jar
 COPY entrypoint.sh .
 COPY dataset ./dataset
 
-ENTRYPOINT ["./entrypoint.sh", "kmeans.jar"]
+ENTRYPOINT ["sh", "./entrypoint.sh", "kmeans.jar"]

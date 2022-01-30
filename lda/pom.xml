@@ -16,6 +16,7 @@
 
     <properties>
         <dockerhub.repository>${dockerhub.repository.prefix}${project.artifactId}</dockerhub.repository>
+        <jar.file>target/${project.build.finalName}-jar-with-dependencies.jar</jar.file>
     </properties>
 
     <dependencies>
@@ -74,7 +75,7 @@
                             <repository>${dockerhub.username}/${dockerhub.repository}</repository>
                             <tag>${project.version}</tag>
                             <buildArgs>
-                                <version>${project.version}</version>
+                                <JAR_FILE>${jar.file}</JAR_FILE>
                             </buildArgs>
                         </configuration>
                     </plugin>
