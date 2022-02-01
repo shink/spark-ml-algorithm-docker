@@ -1,5 +1,6 @@
 package com.yuanhaoji.sparkml.gbtc
 
+import com.yuanhaoji.sparkml.common.io.hadoop.HdfsFileManager
 import com.yuanhaoji.sparkml.common.parameter.CommonParser
 import com.yuanhaoji.sparkml.common.util.PathUtil
 import org.apache.spark.ml.Pipeline
@@ -22,7 +23,18 @@ object Main {
 
         val trainDatasetPath = parameter.getTrainDatasetPath
 
+        // Copy the directory from the local file system to hdfs file system.
+        // For example, the parameter is hdfs://master:9000/dir/dataset,
+        // then the directory at /dir/dataset will be copied
+        // to the hdfs file system at hdfs://master:9000/dir/dataset.
         if (PathUtil.isHdfsPath(trainDatasetPath)) {
+            val hdfsPath = PathUtil.split(trainDatasetPath)
+            val uri = hdfsPath.getUri
+            val path = hdfsPath.getPath
+
+            val fileManager = new HdfsFileManager(uri, "root")
+            fileManager.copy(path, path)
+
             val hadoopConf = spark.sparkContext.hadoopConfiguration
             hadoopConf.set("fs.hdfs.impl", classOf[org.apache.hadoop.hdfs.DistributedFileSystem].getName)
             hadoopConf.set("fs.file.impl", classOf[org.apache.hadoop.fs.LocalFileSystem].getName)
