@@ -24,6 +24,7 @@
 - [Random Forest Classification](random-forest-classification)
 - [Gradient-boosted Tree Classification](gradient-boosted-tree-classification)
 - [Isotonic Regression](isotonic-regression)
+- [Factorization Machines Regression](factorization-machines-regression)
 
 ## Development
 
