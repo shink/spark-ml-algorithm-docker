@@ -1,4 +1,4 @@
-## Latent Dirichlet allocation
+## Latent Dirichlet Allocation
 
 <p align="center">
     <img src="https://img.shields.io/docker/stars/tsund/spark-ml-lda.svg" />
