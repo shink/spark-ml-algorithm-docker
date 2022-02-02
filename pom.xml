@@ -23,6 +23,7 @@
         <module>decision-tree-classification</module>
         <module>random-forest-classification</module>
         <module>gradient-boosted-tree-classification</module>
+        <module>isotonic-regression</module>
     </modules>
 
     <properties>

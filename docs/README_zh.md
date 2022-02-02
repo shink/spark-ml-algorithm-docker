@@ -23,6 +23,7 @@
 - [Decision Tree Classification](../decision-tree-classification)
 - [Random Forest Classification](../random-forest-classification)
 - [Gradient-boosted Tree Classification](../gradient-boosted-tree-classification)
+- [Isotonic Regression](../isotonic-regression)
 
 ## 开发
 
