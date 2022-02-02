@@ -1,10 +1,10 @@
 # Spark ML Algorithms on Docker
 
 <p align="center">
-    <a href="https://github.com/shink/spark-ml-algorithm-docker/workflows"><img src="https://github.com/shink/spark-ml-algorithm-docker/workflows/Release/badge.svg" /></a>
+    <a href="https://github.com/shink/spark-ml-algorithm-docker/actions/workflows/release.yml"><img src="https://github.com/shink/spark-ml-algorithm-docker/workflows/Release/badge.svg" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/github/license/shink/spark-ml-algorithm-docker.svg" /></a>
-    <img src="https://img.shields.io/github/repo-size/shink/spark-ml-algorithm-docker.svg" />
     <img src="https://img.shields.io/badge/language-scala-C22D40.svg" />
+    <img src="https://img.shields.io/github/v/release/shink/spark-ml-algorithm-docker" />
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
 ## Algorithms
 
 - [KMeans](kmeans)
-- [Latent Dirichlet allocation](lda)
+- [Latent Dirichlet Allocation](lda)
 - [Gaussian Mixture Model](gmm)
 - [Binomial Logistic Regression](binomial-logistic-regression)
 - [Multinomial Logistic Regression](multinomial-logistic-regression)
@@ -28,9 +28,9 @@
 
 Requirements:
 
-- Java JDK 8+
-- Maven 3.6.1+
-- Docker 19.03.1+
+- JDK 8+
+- Maven 3+
+- Docker 19+
 - Hadoop 2+
 - Spark 3+
 
