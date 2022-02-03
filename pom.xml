@@ -26,6 +26,7 @@
         <module>isotonic-regression</module>
         <module>factorization-machines-regression</module>
         <module>naive-bayes</module>
+        <module>linear-regression</module>
     </modules>
 
     <properties>
