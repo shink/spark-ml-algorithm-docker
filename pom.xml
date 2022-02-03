@@ -25,6 +25,7 @@
         <module>gradient-boosted-tree-classification</module>
         <module>isotonic-regression</module>
         <module>factorization-machines-regression</module>
+        <module>naive-bayes</module>
     </modules>
 
     <properties>
