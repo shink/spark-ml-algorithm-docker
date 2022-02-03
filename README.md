@@ -26,6 +26,7 @@
 - [Isotonic Regression](isotonic-regression)
 - [Factorization Machines Regression](factorization-machines-regression)
 - [Naive Bayes](naive-bayes)
+- [Linear Regression](linear-regression)
 
 ## Development
 
