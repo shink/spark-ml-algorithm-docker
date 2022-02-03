@@ -25,6 +25,7 @@
 - [Gradient-boosted Tree Classification](gradient-boosted-tree-classification)
 - [Isotonic Regression](isotonic-regression)
 - [Factorization Machines Regression](factorization-machines-regression)
+- [Naive Bayes](naive-bayes)
 
 ## Development
 
